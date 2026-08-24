@@ -1,88 +1,30 @@
-class Pessoa:
-    def __init__(self,nome,cpf,dataNasc):
-        self.nome = nome
-        self.cpf = cpf
-        self.dataNasc = dataNasc
-
-    def renovarPlano(self):
-        pass
-
-    def cancelarPlano(self):
-        pass
-
-    def consultarFicha(self):
-        pass
-
-    def pagarMennsalidade(self):
-        pass
-
-class Instrutor(Pessoa):
-    def __init__(self, nome, cpf, dataNasc,especialidade,cref):
-        super().__init__(nome, cpf, dataNasc)
-        self.especialidade = especialidade
-        self.cref = cref
-
-    def avaliarAluno(self,aluno):
-        pass
-
-    def criarFicha(self,aluno):
-        pass
-
-    def atualizarFicha(self,aluno):
-        pass
-
-    def consultarAgenda(self):
-        pass
-    
-    
-
-class Aluno(Pessoa):
-    def __init__(self, nome, cpf, dataNasc,matricula,plano):
-        super().__init__(nome, cpf, dataNasc)
-        self.matricula = matricula
-        self.plano = plano
-
-    def renovarPlano(self):
-        pass
-
-    def cancelarPlano(self):
-        pass
-
-    def consultarFicha(self):
-        pass
-
-    def pagarMensalidade(self):
-        pass
-    
-
 class Academia:
-    def __init__(self,nome,endereco):
-        self.nome = nome
-        self.endereço = endereco
+    def __init__(self,nome,endereco,telefone,horario,alunos,instrutores,equipamentos):
+        self.__nome = nome
+        self.__endereço = endereco
+        self.__telefone = telefone
+        self.__horario = horario
+        self.__alunos = []
+        self.__alunos.append(alunos)
+        self.__instrutores = []
+        self.__instrutores.append(instrutores)
+        self.__equipamentos = []
+        self.__equipamentos.append(equipamentos)
 
-    def cadastrarAluno(self):
-        pass
+    def cadastrarAluno(self,aluno):
+        self.__alunos.append(aluno)
 
-    def cadastrarInst(self):
-        pass
+    def cadastrarInst(self,instrutor):
+        self.__instrutores.append(instrutor)
 
-    def listrarEquip(self):
-        pass
+    def cadastrarEquip(self,equipamento):
+        self.__equipamentos.append(equipamento)
 
-class equipamento:
-    def __init__(self,nome,patrimonio):
-        self.nome = nome
-        self.patrimonio = patrimonio 
-
-    def verificarStatus(self):
-        pass
-
-    def registrarManut(self):
-        pass
-
-    def atualizarStatus(self):
-        pass
-
+    def listarEquip(self):
+        all_equip = ""
+        for equip in self.__equipamentos:
+            all_equip += f"\n{equip}"  
+        return all_equip
 
 class FichaDeTreino:
     def __init__(self,datacriacao,objetivo):
@@ -101,7 +43,6 @@ class FichaDeTreino:
     def listarExercicios(self):
         pass
 
-
 class Exercicio:
     def __init__(self,nome,series,repeticoes):
         self.nome = nome
@@ -116,4 +57,3 @@ class Exercicio:
 
     def exibirDetalhes(self):
         pass
-
