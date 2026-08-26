@@ -12,6 +12,8 @@ class Equipamento:
     def registrarManut(self,data_inicio,local_manut,duracao):
         self.__manutencoes.append([data_inicio,local_manut,duracao])  
 
+        # chico viado
+
     def mostrarManuts(self):
         texto = ""
         for manut in self.__manutencoes:
