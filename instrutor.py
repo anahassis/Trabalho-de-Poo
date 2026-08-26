@@ -1,42 +1,45 @@
 from pessoa import Pessoa
+
 class Instrutor(Pessoa):
-    def __init__(self, nome, cpf, dataNasc,telefone,especialidade,cref,cargaHoraria,alunos):
-        super().__init__(nome, cpf, dataNasc,telefone)
+    def __init__(self, nome, cpf, dataNasc, telefone, especialidade, cref, cargaHoraria, alunos=None):
+        super().__init__(nome, cpf, dataNasc, telefone)
         self.__especialidade = especialidade
         self.__cref = cref
         self.__cargaHoraria = cargaHoraria
-        self.__alunos = alunos
+        self.__alunos = alunos if alunos is not None else []
 
     def __str__(self):
         return super().__str__() + f", Especialidade: {self.__especialidade}, CREF: {self.__cref}, Carga Horária: {self.__cargaHoraria}, Quant. Alunos: {len(self.__alunos)}"
 
-    def get_info(self,tipo):
-            match tipo:
-                case 'nome':
-                    return self.__nome
-                case 'cpf':
-                    return self.__cpf
-                case 'dataNasc':
-                    return self.__dataNasc
-                case 'telefone':
-                    return self.__telefone
-                case 'especialidade':
-                    return self.__especialidade
-                case 'cref':
-                    return self.__cref
-                case 'cargaHoraria':
-                    return self.__cargaHoraria
-                case 'alunos':
-                    return self.__alunos
-    
-    def avaliarAluno(self,aluno):
-        pass
+    def get_info(self, tipo):
+        res = super().get_info(tipo)
+        if res is not None:
+            return res
+        match tipo:
+            case 'especialidade':
+                return self.__especialidade
+            case 'cref':
+                return self.__cref
+            case 'cargaHoraria':
+                return self.__cargaHoraria
+            case 'alunos':
+                return self.__alunos
 
-    def criarFicha(self,aluno):
-        pass
+    def set_info(self, tipo, info):
+        match tipo:
+            case 'nome' | 'cpf' | 'dataNasc' | 'telefone':
+                super().atualizarDados(tipo, info)
+            case 'especialidade':
+                self.__especialidade = info
+            case 'cref':
+                self.__cref = info
+            case 'cargaHoraria':
+                self.__cargaHoraria = info
+            case 'alunos':
+                self.__alunos = info
 
-    def atualizarFicha(self,aluno):
-        pass
+    def avaliarAluno(self, aluno, nota):
+        aluno.set_info('nota', nota)
 
-    def consultarAgenda(self):
-        pass
+    def atualizarFicha(self, aluno, ficha):
+        aluno.set_info('ficha', ficha)

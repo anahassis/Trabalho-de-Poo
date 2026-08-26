@@ -1,59 +1,41 @@
 class Academia:
-    def __init__(self,nome,endereco,telefone,horario,alunos,instrutores,equipamentos):
+    def __init__(self, nome, endereco, telefone, alunos=None, instrutores=None, equipamentos=None):
         self.__nome = nome
         self.__endereço = endereco
         self.__telefone = telefone
-        self.__horario = horario
-        self.__alunos = []
-        self.__alunos.append(alunos)
-        self.__instrutores = []
-        self.__instrutores.append(instrutores)
-        self.__equipamentos = []
-        self.__equipamentos.append(equipamentos)
+        self.__alunos = alunos if isinstance(alunos, list) else ([alunos] if alunos else [])
+        self.__instrutores = instrutores if isinstance(instrutores, list) else ([instrutores] if instrutores else [])
+        self.__equipamentos = equipamentos if isinstance(equipamentos, list) else ([equipamentos] if equipamentos else [])
 
-    def cadastrarAluno(self,aluno):
+    def __str__(self):
+        return f"Nome: {self.__nome}, Endereço: {self.__endereço}, Telefone: {self.__telefone}, Qnt Alunos: {len(self.__alunos)}, Qnt. Instrutores: {len(self.__instrutores)}"
+
+    def get_info(self,tipo):
+        match tipo:
+            case 'nome':
+                return self.__nome
+            case 'endereco':
+                return self.__endereço
+            case 'telefone':
+                return self.__telefone
+            case 'alunos':
+                return self.__alunos
+            case 'instrutores':
+                return self.__instrutores
+            case ' equipamentos':
+                return self.__equipamentos
+
+    def cadastrarAluno(self, aluno):
         self.__alunos.append(aluno)
 
-    def cadastrarInst(self,instrutor):
+    def cadastrarInst(self, instrutor):
         self.__instrutores.append(instrutor)
 
-    def cadastrarEquip(self,equipamento):
+    def cadastrarEquip(self, equipamento):
         self.__equipamentos.append(equipamento)
 
     def listarEquip(self):
         all_equip = ""
         for equip in self.__equipamentos:
-            all_equip += f"\n{equip}"  
+            all_equip += f"\n{equip}"
         return all_equip
-
-class FichaDeTreino:
-    def __init__(self,datacriacao,objetivo):
-        self.datacriacao = datacriacao
-        self.objetivo = datacriacao
-
-    def addExercicio(self):
-        pass
-
-    def removerRexercicio(self):
-        pass
-
-    def calcularDuracao(self):
-        pass
-
-    def listarExercicios(self):
-        pass
-
-class Exercicio:
-    def __init__(self,nome,series,repeticoes):
-        self.nome = nome
-        self.series = series
-        self.repeticoes
-
-    def executar(self):
-        pass
-
-    def ajustarCarga(self):
-        pass
-
-    def exibirDetalhes(self):
-        pass
