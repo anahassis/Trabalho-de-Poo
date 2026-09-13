@@ -1,9 +1,9 @@
 import os
 from tabuleiro import Tabuleiro
 
-x = int(input("Tamanho XxX: "))
-
-tabuleiro = Tabuleiro(x)
+x = int(input("Tamanho X: "))
+y = int(input("Tamanho Y: "))
+tabuleiro = Tabuleiro(x,y)
 
 while True:
     os.system('cls')
