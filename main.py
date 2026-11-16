@@ -1,21 +1,6 @@
-<<<<<<< HEAD
 import os
 from tabuleiro import Tabuleiro
 
-x = int(input("Tamanho X: "))
-y = int(input("Tamanho Y: "))
-tabuleiro = Tabuleiro(x,y)
-
-while True:
-    os.system('cls')
-    print(tabuleiro)
-    resposta = input("Qual casa (break = quitar): ")
-    if resposta == "break" or resposta == "quitar":
-        break
-    tabuleiro.clicar(int(resposta[0]),int(resposta[1]))
-print()
-print("Easy peasy lemon squeezy")
-=======
 from academia import Academia
 from aluno import Aluno
 from instrutor import Instrutor
@@ -312,4 +297,3 @@ while True:
         break
     else:
         print("Opção inválida! Tente novamente.")
->>>>>>> parent of d259f40 (resetando tudo)
